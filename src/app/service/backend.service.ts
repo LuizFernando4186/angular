@@ -31,7 +31,7 @@ export class BackendService {
     const api = '/controller/login?login=';
     console.log(api + request.login+'&senha='+request.senha)
     const json = '/assets/login.json'
-    return this.httpClient.get<Usuario>(json).pipe(
+    return this.httpClient.get<Usuario>(api + request.login+'&senha='+request.senha).pipe(
       tap((loginResponse) => (this.salvarSessionStorage(loginResponse)))
     );
   }
