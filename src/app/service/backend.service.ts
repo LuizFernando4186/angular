@@ -30,7 +30,8 @@ export class BackendService {
   public login(request: Login): Observable<Usuario> {
     const api = '/controller/login?login=';
     console.log(api + request.login+'&senha='+request.senha)
-    return this.httpClient.get<Usuario>(api + request.login+'&senha='+request.senha).pipe(
+    const json = '/assets/login.json'
+    return this.httpClient.get<Usuario>(json).pipe(
       tap((loginResponse) => (this.salvarSessionStorage(loginResponse)))
     );
   }
